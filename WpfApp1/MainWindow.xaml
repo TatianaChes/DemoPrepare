@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Авторизация" MinHeight="250" MinWidth="200">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Content="Вход" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"  Margin="5"/>
+        <Label Content="Логин" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"  Margin="5"/>
+        <TextBox x:Name="login" Height="30" Width="200" Grid.Column="1" Grid.Row="1"  Margin="5"/>
+        <Label Content="Пароль" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="2"  Margin="5"/>
+        <PasswordBox x:Name="password" Height="30" Width="200" Grid.Column="1" Grid.Row="2"  Margin="5"/>
+        <Button x:Name="enter" Content="Войти" Grid.ColumnSpan="2" Grid.Row="3" Height="30" Width="150"  Margin="5" Click="enter_Click"/>
+        <Label x:Name="guest" Grid.ColumnSpan="2" Grid.Row="4" Content="Войти как гость" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" MouseDoubleClick="guest_MouseDoubleClick"/>
     </Grid>
 </Window>

@@ -1,0 +1,66 @@
+﻿<Window x:Class="WpfApp1.WindowsProject.ProductList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.WindowsProject" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Каталог товаров" MinHeight="450" MinWidth="800">
+    <Window.Resources>
+        <sys:String x:Key="Image">
+            pack://application:,,,/Resources/picture.png 
+        </sys:String>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="3" Background="AliceBlue">
+            <Button x:Name="return" Content="На главную" Height="30" Width="120" Click="return_Click"/>
+            <Label Content="ООО Книжный клуб" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Button x:Name="save" Content="Заказать" Height="30" Width="120" Click="save_Click" Visibility="Hidden"/>
+        </UniformGrid>
+
+        <ListView x:Name="listProduct" Grid.Row="1">
+            <ListView.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="В корзину" Click="MenuItem_Click"></MenuItem>
+               
+            </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"></StackPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition  Width="150"></ColumnDefinition>
+                            <ColumnDefinition  Width="150"></ColumnDefinition>
+                            <ColumnDefinition  Width="150"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding photo}" Width="100" Height="100" Grid.Column="0"></Image>
+                        <UniformGrid Rows="4" Grid.Column="1">
+                            <TextBox Text="{Binding name}"/>
+                            <TextBox Text="{Binding description}" TextWrapping="Wrap"/>
+                            <TextBox Text="{Binding cost}"/>
+                            <TextBox Text="{Binding manufactory}"/>
+                        </UniformGrid>
+                        <TextBox Text="{Binding countOfPoint}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Button x:Name="buy" Content="В корзину" Height="30" Width="120" Click="buy_Click" Grid.Column="3"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView> 
+        
+        <UniformGrid Columns="2" Background="AliceBlue" Grid.Row="2">
+            <Button x:Name="orders" Content="Заказы" Height="30" Width="120" Click="orders_Click" Visibility="Hidden"/>
+            <Button x:Name="products" Content="Товары" Height="30" Width="120" Click="products_Click" Visibility="Hidden"/>
+        </UniformGrid>
+    </Grid>
+</Window>
